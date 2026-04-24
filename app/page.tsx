@@ -1,71 +1,126 @@
-import Image from "next/image";
-import { auth } from "@clerk/nextjs/server";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import {
+  Link2,
+  BarChart2,
+  Tag,
+  Zap,
+  ArrowRight,
+} from "lucide-react";
 
-export default async function Home() {
-  const { userId } = await auth();
+const features = [
+  {
+    icon: Zap,
+    title: "Instant shortening",
+    description:
+      "Paste any long URL and get a clean, shareable short link in seconds — no sign-up required to try.",
+  },
+  {
+    icon: BarChart2,
+    title: "Click analytics",
+    description:
+      "Track how many times each link is clicked so you always know how your content is performing.",
+  },
+  {
+    icon: Tag,
+    title: "Custom aliases",
+    description:
+      "Choose your own memorable slug instead of a random code — great for branded campaigns.",
+  },
+  {
+    icon: Link2,
+    title: "Manage all your links",
+    description:
+      "View, edit, and delete every link you've created from one simple dashboard.",
+  },
+];
 
+export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex flex-1 flex-col">
+      {/* Hero */}
+      <section className="flex flex-1 flex-col items-center justify-center gap-8 px-6 py-24 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+            <Zap className="size-3" />
+            Fast, free &amp; easy
+          </span>
+          <h1 className="max-w-2xl text-5xl font-bold tracking-tight">
+            Shorten links.{" "}
+            <span className="text-muted-foreground">Track results.</span>
           </h1>
-          <p className="text-sm text-zinc-700 dark:text-zinc-300">
-            {userId ? "You are signed in." : "You are signed out."}
-          </p>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-xl text-lg text-muted-foreground">
+            Turn unwieldy URLs into clean, shareable links in one click. Monitor
+            clicks, create custom aliases, and manage everything from one
+            dashboard.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <SignUpButton mode="modal">
+            <Button size="lg" className="gap-2 px-6">
+              Get started free
+              <ArrowRight className="size-4" />
+            </Button>
+          </SignUpButton>
+          <SignInButton mode="modal">
+            <Button size="lg" variant="outline" className="px-6">
+              Sign in
+            </Button>
+          </SignInButton>
         </div>
-      </main>
+      </section>
+
+      {/* Features */}
+      <section className="border-t border-border bg-muted/30 px-6 py-20">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-12">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <h2 className="text-3xl font-bold tracking-tight">
+              Everything you need
+            </h2>
+            <p className="max-w-md text-muted-foreground">
+              A focused set of tools that covers the full link-management
+              workflow without the clutter.
+            </p>
+          </div>
+          <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map(({ icon: Icon, title, description }) => (
+              <Card key={title} className="flex flex-col gap-0">
+                <CardHeader>
+                  <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="size-5 text-primary" />
+                  </div>
+                  <CardTitle>{title}</CardTitle>
+                  <CardDescription>{description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="border-t border-border px-6 py-20">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Ready to tidy up your links?
+          </h2>
+          <p className="text-muted-foreground">
+            Create your free account and start shortening in seconds.
+          </p>
+          <SignUpButton mode="modal">
+            <Button size="lg" className="gap-2 px-8">
+              Create free account
+              <ArrowRight className="size-4" />
+            </Button>
+          </SignUpButton>
+        </div>
+      </section>
     </div>
   );
 }
