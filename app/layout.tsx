@@ -6,24 +6,32 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Button } from "@/components/ui/button";
 import "./globals.css";
 
-const geistSans = Geist({
+/**
+ * NOTE: CI for this repo runs in an environment where outbound network requests
+ * can be blocked. `next/font/google` fetches fonts during `next build`, which
+ * causes builds to fail when Google Fonts is unreachable.
+ *
+ * Using local fonts keeps builds deterministic and network-independent.
+ */
+const geistSans = localFont({
+  src: "../public/fonts/Geist-Variable.woff2",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "../public/fonts/GeistMono-Variable.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "LinkShort — URL Shortener",
-  description:
-    "Shorten URLs, track clicks, and manage all your links in one place.",
+  description: "Shorten URLs, track clicks, and manage all your links in one place.",
 };
 
 export default function RootLayout({
