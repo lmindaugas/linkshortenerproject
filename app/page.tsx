@@ -1,4 +1,4 @@
-import { HeroAuthButtons, CtaSignUpButton } from "@/components/auth-buttons";
+import { HeroAuthButtons } from "@/components/auth-buttons";
 import {
   Card,
   CardHeader,
@@ -89,19 +89,6 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="border-t border-border px-6 py-20 text-center">
-        <div className="mx-auto flex max-w-xl flex-col items-center gap-6">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Ready to get started?
-          </h2>
-          <p className="text-muted-foreground">
-            Join today and start creating short links in under a minute.
-          </p>
-          <CtaSignUpButton />
         </div>
       </section>
     </div>
