@@ -1,5 +1,4 @@
-import { SignInButton, SignUpButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
+import { HeroAuthButtons, CtaSignUpButton } from "@/components/auth-buttons";
 import {
   Card,
   CardHeader,
@@ -7,7 +6,7 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { Link2, BarChart3, Shield, Zap, ArrowRight } from "lucide-react";
+import { Link2, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
   {
@@ -57,19 +56,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <SignUpButton mode="modal">
-            <Button size="lg" className="gap-2 px-6">
-              Get started free
-              <ArrowRight className="size-4" />
-            </Button>
-          </SignUpButton>
-          <SignInButton mode="modal">
-            <Button variant="outline" size="lg" className="px-6">
-              Sign in
-            </Button>
-          </SignInButton>
-        </div>
+        <HeroAuthButtons />
       </section>
 
       {/* Features */}
@@ -114,12 +101,7 @@ export default function Home() {
           <p className="text-muted-foreground">
             Join today and start creating short links in under a minute.
           </p>
-          <SignUpButton mode="modal">
-            <Button size="lg" className="gap-2 px-8">
-              Create your free account
-              <ArrowRight className="size-4" />
-            </Button>
-          </SignUpButton>
+          <CtaSignUpButton />
         </div>
       </section>
     </div>
