@@ -1,4 +1,4 @@
-import { HeroAuthButtons, CtaSignUpButton } from "@/components/auth-buttons";
+import { HeroAuthButtons } from "@/components/auth-buttons";
 import {
   Card,
   CardHeader,
@@ -101,7 +101,6 @@ export default function Home() {
           <p className="text-muted-foreground">
             Join today and start creating short links in under a minute.
           </p>
-          <CtaSignUpButton />
         </div>
       </section>
     </div>
