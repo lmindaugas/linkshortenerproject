@@ -6,6 +6,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import { shadcn } from "@clerk/themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import "./globals.css";
@@ -37,7 +38,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ClerkProvider>
+        <ClerkProvider appearance={{ baseTheme: shadcn }}>
           <header className="w-full border-b border-border bg-background/80 px-6 py-3 backdrop-blur">
             <nav className="mx-auto flex w-full max-w-5xl items-center justify-end gap-3">
               <Show when="signed-out">
