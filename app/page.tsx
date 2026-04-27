@@ -87,15 +87,15 @@ export default function Home() {
 
           <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map(({ icon: Icon, title, description }) => (
-              <Card key={title} className="flex flex-col">
+              <Card key={title}>
                 <CardHeader>
-                  <div className="mb-2 flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
                     <Icon className="size-5 text-primary" />
                   </div>
                   <CardTitle>{title}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1">
-                  <CardDescription className="text-sm leading-relaxed">
+                <CardContent>
+                  <CardDescription className="leading-relaxed">
                     {description}
                   </CardDescription>
                 </CardContent>
