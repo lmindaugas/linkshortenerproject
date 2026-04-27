@@ -40,10 +40,10 @@ export default function RootLayout({
           <header className="w-full border-b border-border bg-background/80 px-6 py-3 backdrop-blur">
             <nav className="mx-auto flex w-full max-w-5xl items-center justify-end gap-3">
               <Show when="signed-out">
-                <SignInButton>
+                <SignInButton mode="modal">
                   <Button variant="ghost">Sign in</Button>
                 </SignInButton>
-                <SignUpButton>
+                <SignUpButton mode="modal">
                   <Button>Sign up</Button>
                 </SignUpButton>
               </Show>
