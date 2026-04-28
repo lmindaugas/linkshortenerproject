@@ -1,5 +1,5 @@
 ---
-name: Commit Message Generator
+name: commit-message
 description: Generate clear, concise commit messages from git diffs. Use when writing commit messages, reviewing staged changes, or formatting git history.
 ---
 
